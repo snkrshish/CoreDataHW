@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		444982C42B5B42AC00D5BDDE /* List_of_Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 444982C22B5B42AC00D5BDDE /* List_of_Person.xcdatamodeld */; };
+		444982C62B5B433F00D5BDDE /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444982C52B5B433F00D5BDDE /* CoreDataProtocol.swift */; };
 		44FDB1D92B55F52100A2AF2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1D82B55F52100A2AF2B /* AppDelegate.swift */; };
 		44FDB1DB2B55F52100A2AF2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1DA2B55F52100A2AF2B /* SceneDelegate.swift */; };
 		44FDB1DD2B55F52100A2AF2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1DC2B55F52100A2AF2B /* MainViewController.swift */; };
-		44FDB1E32B55F52100A2AF2B /* CoreData_HW.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1E12B55F52100A2AF2B /* CoreData_HW.xcdatamodeld */; };
 		44FDB1E52B55F52200A2AF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44FDB1E42B55F52200A2AF2B /* Assets.xcassets */; };
 		44FDB1E82B55F52200A2AF2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44FDB1E62B55F52200A2AF2B /* LaunchScreen.storyboard */; };
 		44FDB1F92B55FFB100A2AF2B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 44FDB1F82B55FFB100A2AF2B /* SnapKit */; };
 		44FDB1FB2B55FFB100A2AF2B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 44FDB1FA2B55FFB100A2AF2B /* SnapKit-Dynamic */; };
+		44FDB1FD2B589B1B00A2AF2B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1FC2B589B1B00A2AF2B /* CoreDataManager.swift */; };
+		44FDB1FF2B58E4D700A2AF2B /* PersonCoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB1FE2B58E4D700A2AF2B /* PersonCoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444982C32B5B42AC00D5BDDE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		444982C52B5B433F00D5BDDE /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		44FDB1D52B55F52100A2AF2B /* CoreData-HW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoreData-HW.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FDB1D82B55F52100A2AF2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FDB1DA2B55F52100A2AF2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		44FDB1DC2B55F52100A2AF2B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		44FDB1E22B55F52100A2AF2B /* CoreData_HW.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData_HW.xcdatamodel; sourceTree = "<group>"; };
 		44FDB1E42B55F52200A2AF2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44FDB1E72B55F52200A2AF2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44FDB1E92B55F52200A2AF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44FDB1FC2B589B1B00A2AF2B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		44FDB1FE2B58E4D700A2AF2B /* PersonCoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCoreDataClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +136,10 @@
 		44FDB1F62B55F9AB00A2AF2B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				44FDB1E12B55F52100A2AF2B /* CoreData_HW.xcdatamodeld */,
+				44FDB1FE2B58E4D700A2AF2B /* PersonCoreDataClass.swift */,
+				44FDB1FC2B589B1B00A2AF2B /* CoreDataManager.swift */,
+				444982C52B5B433F00D5BDDE /* CoreDataProtocol.swift */,
+				444982C22B5B42AC00D5BDDE /* List_of_Person.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -212,10 +221,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444982C62B5B433F00D5BDDE /* CoreDataProtocol.swift in Sources */,
 				44FDB1DD2B55F52100A2AF2B /* MainViewController.swift in Sources */,
-				44FDB1E32B55F52100A2AF2B /* CoreData_HW.xcdatamodeld in Sources */,
+				44FDB1FF2B58E4D700A2AF2B /* PersonCoreDataClass.swift in Sources */,
 				44FDB1D92B55F52100A2AF2B /* AppDelegate.swift in Sources */,
+				44FDB1FD2B589B1B00A2AF2B /* CoreDataManager.swift in Sources */,
 				44FDB1DB2B55F52100A2AF2B /* SceneDelegate.swift in Sources */,
+				444982C42B5B42AC00D5BDDE /* List_of_Person.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,13 +468,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		44FDB1E12B55F52100A2AF2B /* CoreData_HW.xcdatamodeld */ = {
+		444982C22B5B42AC00D5BDDE /* List_of_Person.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				44FDB1E22B55F52100A2AF2B /* CoreData_HW.xcdatamodel */,
+				444982C32B5B42AC00D5BDDE /* Model.xcdatamodel */,
 			);
-			currentVersion = 44FDB1E22B55F52100A2AF2B /* CoreData_HW.xcdatamodel */;
-			path = CoreData_HW.xcdatamodeld;
+			currentVersion = 444982C32B5B42AC00D5BDDE /* Model.xcdatamodel */;
+			path = List_of_Person.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
