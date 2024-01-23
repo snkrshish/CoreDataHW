@@ -2,67 +2,91 @@ import Foundation
 import CoreData
 
 final class CoreDataManager: CoreDataProtocol {
-    var friends: [Person]?
-    
 
-    static let shared = CoreDataManager()
-    var person: [Person]?
+    // MARK: - Properties
+
+    private let userFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
 
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "List_of_person")
-
-        container.loadPersistentStores { storeDescription, error in
+        let container = NSPersistentContainer(name: "List_of_Person")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Ошибка: \(error), \(error.localizedDescription)")
+                fatalError("Error \(error), \(error.userInfo)")
             }
-        }
+        })
         return container
     }()
 
-    private lazy var context: NSManagedObjectContext = {
-        return persistentContainer.viewContext
-    }()
+    private lazy var managedObjectContext: NSManagedObjectContext = persistentContainer.viewContext
 
-    private func saveContext() {
-        let context = persistentContainer.viewContext
+    // MARK: - Methods
 
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Ошибка: \(nserror), \(nserror.localizedDescription)")
-            }
-        }
+    func saveName(_ name: String) {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Person",
+                                                                 in: managedObjectContext) else { return }
+        let newUser = Person(entity: entityDescription, insertInto: managedObjectContext)
+        newUser.name = name
+
+        saveChanges()
     }
 
-    func fetchPerson() {
-        let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+    func saveBirthDate(_ dateOfBirth: Date) {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Person",
+                                                                 in: managedObjectContext) else { return }
+        let newUser = Person(entity: entityDescription, insertInto: managedObjectContext)
+        newUser.dateOfBirth = dateOfBirth
 
+        saveChanges()
+    }
+
+    func updateDetails(for user: Person,
+                           avatarData avatar: Data?,
+                           name: String?,
+                           dateOfBirth: Date?,
+                           gender: String?) {
+        if let avatar = avatar {
+            user.avatar = avatar
+        }
+
+        if let name = name {
+            user.name = name
+        }
+
+        if let dateOfBirth = dateOfBirth {
+            user.dateOfBirth = dateOfBirth
+        }
+
+        if let gender = gender {
+            user.gender = gender
+        }
+
+        saveChanges()
+    }
+
+    func fetchAllUsers() -> [Person]? {
         do {
-            person = try context.fetch(fetchRequest)
+            let persons = try managedObjectContext.fetch(userFetchRequest) as? [Person]
+            return persons
         } catch {
             print(error)
+            return nil
         }
     }
 
-    func addNewPerson(name: String, gender: String, dateOfBirth: String) {
-        let person = Person(context: context)
-        person.name = name
-        person.gender = gender
-        person.dateOfBirth = dateOfBirth
-        updatePerson()
+    func deleteUser(user: Person) {
+        managedObjectContext.delete(user)
+
+        saveChanges()
     }
 
-    func deletePerson(_ index: Int) {
-        guard let person = person?[index] else { return }
+    // MARK: - Save changes method
 
-        context.delete(person)
-        updatePerson()
-    }
-
-    func updatePerson() {
-        saveContext()
-        fetchPerson()
+    private func saveChanges() {
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Error \(error), \(error.userInfo)")
+        }
     }
 }
